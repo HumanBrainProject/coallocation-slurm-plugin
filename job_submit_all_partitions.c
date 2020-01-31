@@ -3,7 +3,7 @@
  *  to all partitions in a cluster.
  *****************************************************************************
  *  Copyright (c) 2019-2020 Technische Universitaet Darmstadt, Darmstadt, Germany
- *  Author: Hamid Mohammadi Fard, email: fard@cs.tu-darmstadt.de
+ *  Authors: Varsha Dubay and Hamid Mohammadi Fard, contact: fard@cs.tu-darmstadt.de
  *
  *  This source code is a modified version of the source code of job_submit_all_partitions.c
  *  which has been publihed in 31 JAN 2020, by the following URL:
