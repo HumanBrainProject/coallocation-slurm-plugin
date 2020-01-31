@@ -60,3 +60,7 @@ Setup the virtual testbed
 We have cretaed a virtual cluster for our development and test purposes. To make this environment easily usable for everybody, we automated the setup process by Vagrant Software. To complete all requirements for producing the virtual cluster, first you need to install both **VirtualBox** and **Vagrant** software inside a Linux system. Then you could use the `Vagrantfile`, available in the repository of the project, to setup the virtual cluster. By this setup, you will have three servers, two partitions, two storage tiers (HPS and LPS) and a single control daemon server.
 
 After this setup, the cluster is ready to use and you could submit your jobs using sbatch command. By passing the job storage requirements of jobs, as discussed in previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
+
+Legal
+-----
+This plugin is licensed under the GNU General Public License v3.0, also included in our repository in the LICENCE file.
