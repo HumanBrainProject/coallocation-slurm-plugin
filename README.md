@@ -1,6 +1,6 @@
 How-to-use instructions
 =======================
-To use our plugin in a multi-tiered storage cluster, we describe how to install and use our plugin, as follows. 
+To use our plugin in a multi-tiered storage cluster, we describe how to install and use our plugin, as follows. We have considered two storage tiers called low performance storage (lps) and high performance storage (hps).
 
 Installation guide
 ------------------
@@ -15,7 +15,7 @@ To ease of use, a sample configuration file defining two partitions is available
 
 User guide
 ----------
-To use the plugin, when submitting a job, users need to define their own job storage requirements, as new arguments in the sbatch command line. These new arguments include:
+To use the plugin, when submitting a job, users need to define their own job storage requirements, as new arguments in the `sbatch` command line. These new arguments include:
 - `lps-path`: the path to low performance storage,
 - `hps-path`: the path to high performance storage,
 - `lps-speed`: the low performance storage's speed,
@@ -47,9 +47,9 @@ echo new line appended in the remote host >> output.txt
 cp output.txt $SLURM_SUBMIT_DIR/.
 #end of job script
 ```
-This simple job receives a text file, called `input.txt` (located in the same directory of `sample.sh`) as input and produces an output file, called `output.txt` (located in the same directory of `sample.sh`), by appending a new line of string to the end of the input file. In this job script, the environment variable `SLURM_SUBMIT_DIR` refers the directory from which sbatch was invoked and `HPC_LOCAL` refers to the working directory (mapped in lps or hps tier) in the compute node running the job.
+This simple job receives a text file, called `input.txt` (located in the same directory of `sample.sh`) as input and produces an output file, called `output.txt` (located in the same directory of `sample.sh`), by appending a new line of string to the end of the input file. In this job script, the environment variable `SLURM_SUBMIT_DIR` refers the directory from which `sbatch` was invoked and `HPC_LOCAL` refers to the working directory (mapped in lps or hps tier) in the compute node running the job.
 
-Because the sbatch’s arguments are specified respecting the job requirements, for instance to ask Slurm to use hps tier for I/O operations, we could submit this job as follows:
+Because the `sbatch`’s arguments are specified respecting the job requirements, for instance to ask Slurm to use hps tier for I/O operations, we could submit this job as follows:
 ```
 sbatch sample.js --hps-path=/hps
 ```
@@ -60,4 +60,4 @@ Setup the virtual testbed
 
 We have used a virtual cluster for our development and test purposes. To make this environment easily usable for everybody, we automated the setup process by Vagrant Software. To complete all requirements for producing the virtual cluster, first you need to install both **VirtualBox** and **Vagrant** software inside a Linux system. Then you could use the `Vagrantfile`, available in the repository of the project, to setup the virtual cluster. By this setup, you will have three servers, two partitions, two storage tiers (hps and lps) and a single control daemon server.
 
-After this setup, the cluster is ready to use and you could submit your jobs using sbatch command. By passing the job storage requirements of jobs, as discussed in the previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
+After this setup, the cluster is ready to use and you could submit your jobs using `sbatch` command. By passing the job storage requirements of jobs, as discussed in the previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
