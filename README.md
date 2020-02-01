@@ -1,13 +1,13 @@
 How-to-use instructions
 =======================
-To use our plugin in a multi-tiered storage cluster, we describe how to install and use our plugin, as follows. We have considered two storage tiers called low performance storage (lps) and high performance storage (hps).
+To use our plugin in a multi-tiered storage cluster, we describe how to install and use our plugin, as follows. We have considered two storage tiers, called low performance storage (lps) and high performance storage (hps).
 
 Installation guide
 ------------------
 To install our plugin, the system administrator needs to follow the following steps:
 1. Download the source code of our plugin called `job_submit_all_partitions.c` available in the project repository;
 2. Copy the file in `<slurm_folder>/src/plugin/job_submit/all_partitions` of controller node(s) of Slurm;
-3. Compile the source code and then copy the compiled version (.so extension) from .libs folder to the plugin directory (by default `/usr/local/lib/slurm`);
+3. Compile the source code and then copy the compiled version (.so extension) from `.libs` folder to the plugin directory (by default `/usr/local/lib/slurm`);
 4. Set this new plugin in the Slurm configuration file (`slurm.conf`) by inserting the line `JobSubmitPlugins=job_submit/all_partitions`
 5. Define the partitions as required (based on the storage needs) in the Slurm configuration file (`slurm.conf`);
 6. Restart the control daemon (`slurmctld`) of Slurm.
@@ -25,7 +25,7 @@ To use the plugin, when submitting a job, users need to define their own job sto
 
 If users have no know knowledge available in advance about the storage needs of the job, they can simply ignore all the parameters (arguments) and the algorithm will apply the default job submission mechanism of Slurm.
 
-The current version of the plugin is a basic implementation that does not implement the scheduling logic discussed in the design document. Therefore, in the current version only `lps-path` and `hps-path` are meaningful and the rest of arguments are useless but we defined them for implementing the logic of the scheduling algorithm, which will be completed in the next few weeks. 
+The current version of the plugin is a basic implementation that does not implement any scheduling logic. Therefore, in the current version only `lps-path` and `hps-path` are meaningful and the rest of arguments are useless but we defined them for implementing the logic of the scheduling algorithm in the next version. 
 
 We need to notice that `lps-path`, `hps-path`, `lps-speed` and `hps-speed` can be implicitly defined in the source code of the plugin. Defining them as arguments gives users the possibility of choosing only the desired storage tiers when there are more than two tiers in the cluster. The argument `wait-time` should be calculated dynamically from the system status, by the plugin but still we need time to find the way to gather this information dynamically.
 
