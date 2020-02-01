@@ -54,6 +54,7 @@ Because the sbatch’s arguments are specified respecting the job requirements, 
 sbatch sample.js --hps-path=/hps
 ```
 Looking at the code of the plugin, one can detect that the function `_set_job_working_dir` will set the working directory (referred by the environment variable `HPC_LOCAL`) for each job. In other words, based on the adequate storage tier selected by the plugin, this function maps the output path of each job to the hps or the lps tier.
+
 Setup the virtual testbed
 -------------------------
 
