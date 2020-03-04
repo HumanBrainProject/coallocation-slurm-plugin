@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH -A IPLANT-DEV
+#SBATCH -J slurmtestv
+#SBATCH -o slurmtestv.out  # STDOUT
+#SBATCH -e slurmtestv.err  # STDERR
+#SBATCH -t 0:30:00  # time limit (D-HH:MM)
+#SBATCH -p debug   # partition (queue)
+#SBATCH -n 1      # number of cores
+
+date
+hostname
+echo "In the Directory: `pwd`"
+sleep 10
+date
