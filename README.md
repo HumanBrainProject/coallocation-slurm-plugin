@@ -11,7 +11,6 @@ To install our plugin, the system administrator needs to follow the following st
 4. Set this new plugin in the Slurm configuration file (`slurm.conf`) by inserting the line `JobSubmitPlugins=job_submit/all_partitions`
 5. Define the partitions as required (based on the storage needs) in the Slurm configuration file (`slurm.conf`);
 6. Restart the control daemon (`slurmctld`) of Slurm.
-To ease of use, a sample Slurm configuration file defining two partitions is available in the repository of the project.
 
 User guide
 ----------
@@ -69,15 +68,13 @@ We have used a virtual cluster for our development and test purposes. To make th
 7. Comment out the lines 75-76 again.
 8. Run `vagrant up` again.
 9. Run `vagrant ssh controller`
-10. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make & make install && sudo slurmctld -D &`).
+10. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && sudo slurmctld -D &`).
 11. Run `vagrant ssh server1`
-12. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make & make install && slurmd start`).
-13. Do the same for **server2** VM.
-14. Test the servers are idle and ready to submit the jobs, by running `sinfo` on the **controller** VM.
+12. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && slurmd start`).
+13. Do the step 12 for **server2** VM.
+14. Make sure the servers are idle and ready to submit the jobs, by running `sinfo` on the **controller** VM.
 
-By this setup, you will have three servers, two partitions, two shared storage tiers (**hps** and **lps**) and a single control daemon server.
-
-After this setup, the cluster is ready to use and you could submit your jobs using `sbatch` command. By passing the job storage requirements of jobs, as discussed in the previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
+By this setup, you will have three servers (two compute nodes and a single control daemon server), two partitions and two shared storage tiers (**hps** and **lps**). Now you could submit your jobs using `sbatch` command. By passing the job storage requirements of jobs, as discussed in the previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
 
 ## References
 <a id="1">[1]</a>
