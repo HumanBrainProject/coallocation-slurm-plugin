@@ -1,0 +1,8 @@
+#!/bin/sh -e
+#
+#rc.local
+service o2cb online
+mount /dev/sdb /home/vagrant/lps
+mount /dev/sdc /home/vagrant/hps
+
+slurmd start
