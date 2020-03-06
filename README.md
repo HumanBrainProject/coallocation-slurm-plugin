@@ -24,7 +24,7 @@ To use the plugin, when submitting a job, users need to define their own job sto
 
 If users have no know knowledge available in advance about the storage needs of the job, they can simply ignore all the parameters (arguments) and the algorithm will apply the default job submission mechanism of Slurm.
 
-The current version of the plugin implements the scheduling logic published by our paper [[1]](#1). Based on the published scheduling approach, the plugin must calculate the argument `wait-time` dynamically from the system status, but still we need time to find the way to gather this information dynamically, therefore we replaced this with some random values in the current version of the plugin. 
+The current version of the plugin implements the scheduling mechanism published by our paper [[1]](#1). Based on the published scheduling approach, the plugin must calculate the argument `wait-time` dynamically from the system status, but still we need time to find the way to gather this information dynamically, therefore we replaced this with some synthetic values in the current version of the plugin, which of course needs to be modified while using in a production environment. 
 
 We need to notice that `lps-path`, `hps-path`, `lps-speed` and `hps-speed` can be implicitly defined in the source code of the plugin. Defining them as arguments gives users the possibility of choosing only the desired storage tiers when there are more than two tiers in the cluster. 
 
