@@ -24,7 +24,7 @@ To use the plugin, when submitting a job, users need to define their own job sto
 
 If users have no know knowledge available in advance about the storage needs of the job, they can simply ignore all the parameters (arguments) and the algorithm will apply the default job submission mechanism of Slurm.
 
-The current version of the plugin implements the scheduling mechanism published by our paper [[1]](#1). Based on the published scheduling approach, the plugin must calculate the argument `wait-time` dynamically from the system status, but still we need time to find the way to gather this information dynamically, therefore we replaced this with some synthetic values in the current version of the plugin, which of course needs to be modified while using in a production environment. 
+The current version of the plugin implements the scheduling mechanism published by our paper [[1]](#1). Based on the published scheduling approach, the plugin must calculate the argument `wait-time` dynamically from the system status. Because still we need time to find the way to gather this information dynamically, in the current version of the plugin, we replaced the waiting time with synthetic values, which of course needs to be modified while using in a production environment. 
 
 We need to notice that `lps-path`, `hps-path`, `lps-speed` and `hps-speed` can be implicitly defined in the source code of the plugin. Defining them as arguments gives users the possibility of choosing only the desired storage tiers when there are more than two tiers in the cluster. 
 
@@ -65,14 +65,14 @@ We have used a virtual cluster for our development and test purposes. To make th
 4. Run `cp job_submit_all_partitions.c slurm/src/plugin/job_submit/all_partitions/.` in the folder of the project.
 5. Uncomment the lines 75-76 in the **Vagrantfile**.
 6. Run `vagrant up` twice (inspite of getting any errors or no error).
-7. Comment out the lines 75-76 again.
+7. Comment out the lines 75-76 in the **Vagrantfile**.
 8. Run `vagrant up` again.
-9. Run `vagrant ssh controller`
+9. Run `vagrant ssh controller`.
 10. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && sudo slurmctld -D &`).
 11. Run `vagrant ssh server1`
 12. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && slurmd start`).
-13. Do the step 12 for **server2** VM.
-14. Make sure the servers are idle and ready to submit the jobs, by running `sinfo` on the **controller** VM.
+13. Do the same as steps 11 and 12 for **server2** VM.
+14. Make sure the **server1** and **server2** are idle and ready to submit the jobs, by running `sinfo` on the **controller** VM.
 
 By this setup, you will have three servers (two compute nodes and a single control daemon server), two partitions and two shared storage tiers (**hps** and **lps**). Now you could submit your jobs using `sbatch` command. By passing the job storage requirements of jobs, as discussed in the previous section, you will let Slurm decide which compute and data resources should be assigned to your jobs. 
 
