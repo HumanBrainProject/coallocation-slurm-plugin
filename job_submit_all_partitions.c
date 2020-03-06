@@ -1,6 +1,6 @@
 /*****************************************************************************\
- *  job_submit_all_partitions.c - Decides between using two shared storage tiers while schedling the
- *  jobs based on the scheduling mechanism proposed in http://dx.doi.org/10.1109/CCGRID.2019.00046.
+ *  job_submit_all_partitions.c - Decides between using two shared storage tiers while scheduling the
+ *  jobs, based on the scheduling mechanism proposed in http://dx.doi.org/10.1109/CCGRID.2019.00046.
  *****************************************************************************
  *  Copyright (c) 2019-2020 Technische Universitaet Darmstadt, Darmstadt, Germany
  *  Authors: Varsha Dubay and Hamid Mohammadi Fard, contact: fard@cs.tu-darmstadt.de
