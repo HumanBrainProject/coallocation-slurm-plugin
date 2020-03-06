@@ -69,7 +69,7 @@ We have used a virtual cluster for our development and test purposes. To make th
 8. Run `vagrant up` again.
 9. Run `vagrant ssh controller`.
 10. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && sudo slurmctld -D &`).
-11. Run `vagrant ssh server1`
+11. Run `vagrant ssh server1`.
 12. Compile the Sulrm source code in the VM and run the service (`cd /vagrant/slurm && ./configure && make && make install && slurmd start`).
 13. Do the same as steps 11 and 12 for **server2** VM.
 14. Make sure the **server1** and **server2** are idle and ready to submit the jobs, by running `sinfo` on the **controller** VM.
