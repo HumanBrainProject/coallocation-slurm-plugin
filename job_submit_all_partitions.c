@@ -504,13 +504,13 @@ extern int job_submit(struct job_descriptor *job_desc,
 	if (EMPTY_QUEUE == slurm_list_count(job_list)) {
 		if (job_arguments.job_space < hps_storage_free_space) {
         		info("\tsubmit the job to hps");
-			_copy_submit_file_to_storage(job_desc, job_arguments.hps_path);
+			//_copy_submit_file_to_storage(job_desc, job_arguments.hps_path);
 			_set_job_working_dir(job_desc, job_arguments.hps_path);
 			_set_job_partition(job_desc, HPS_PARTITION_NAME);
         		info("\thps storage free space: %d", hps_storage_free_space - job_arguments.job_space);
 		} else {
         		info("\tsubmit the job to lps");
-			_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
+			//_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
 			_set_job_working_dir(job_desc, job_arguments.lps_path);
 			_set_job_partition(job_desc, LPS_PARTITION_NAME);
 		}
@@ -527,19 +527,19 @@ extern int job_submit(struct job_descriptor *job_desc,
 		if (job_arguments.job_space < hps_storage_free_space) {
 			if (job_lps_time > job_hps_time) {
         			info("\tsubmit the job to hps");
-				_copy_submit_file_to_storage(job_desc, job_arguments.hps_path);
+				//_copy_submit_file_to_storage(job_desc, job_arguments.hps_path);
 				_set_job_working_dir(job_desc, job_arguments.hps_path);
 				_set_job_partition(job_desc, HPS_PARTITION_NAME);
 			} else {
         			info("\tsubmit the job to lps");
-				_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
+				//_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
 				_set_job_working_dir(job_desc, job_arguments.lps_path);
 				_set_job_partition(job_desc, LPS_PARTITION_NAME);
 			}
 	        	info("\thps storage free space: %d", hps_storage_free_space - job_arguments.job_space);
 		} else {
         		info("\tsubmit the job to lps");
-			_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
+			//_copy_submit_file_to_storage(job_desc, job_arguments.lps_path);
 			_set_job_working_dir(job_desc, job_arguments.lps_path);
 			_set_job_partition(job_desc, LPS_PARTITION_NAME);
 		}

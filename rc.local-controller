@@ -2,6 +2,7 @@
 #
 #rc.local
 service o2cb start
+service munge start
 
 mount /dev/sdb /home/vagrant/lps
 mount /dev/sdc /home/vagrant/hps

@@ -1,6 +1,0 @@
-#!/bin/sh -e
-#
-#rc.local
-service munge start
-chmod g=rwx /var/spool
-slurmctld -D &
