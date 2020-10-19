@@ -1,13 +1,13 @@
 /*****************************************************************************\
- *  job_submit_all_partitions.c - Decides between using two shared storage tiers while scheduling the
+ *  job_submit_storage_aware.c - Decides between using two shared storage tiers while scheduling the
  *  jobs, based on the scheduling mechanism proposed in http://dx.doi.org/10.1109/CCGRID.2019.00046.
  *****************************************************************************
  *  Copyright (c) 2019-2020 Technische Universitaet Darmstadt, Darmstadt, Germany
  *  Authors: Varsha Dubay and Hamid Mohammadi Fard, contact: fard@cs.tu-darmstadt.de
  *
- *  This source code is a modified version of the source code of job_submit_all_partitions.c
+ *  This source code is a modified version of the source code of job_submit_storage_aware.c
  *  which has been publihed in 31 JAN 2020, by the following URL:
- *  https://github.com/SchedMD/slurm/blob/master/src/plugins/job_submit/all_partitions/job_submit_all_partitions.c
+ *  https://github.com/SchedMD/slurm/blob/master/src/plugins/job_submit/storage_aware/job_submit_storage_aware.c
  *
  *  This job submission plugin is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -65,8 +65,8 @@
 #define BAR_EXCEPTION (2)
 #define BAZ_EXCEPTION (3)
 
-const char plugin_name[]       	= "Job submit all_partitions plugin";
-const char plugin_type[]       	= "job_submit/all_partitions";
+const char plugin_name[]       	= "Job submit storage_aware plugin";
+const char plugin_type[]       	= "job_submit/storage_aware";
 const uint32_t plugin_version   = SLURM_VERSION_NUMBER;
 
 #define EMPTY_QUEUE 0

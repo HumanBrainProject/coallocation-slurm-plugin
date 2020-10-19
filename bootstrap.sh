@@ -1,6 +1,6 @@
 #Preparation
 apt-get update
-apt-get install -y make cmake git libmunge-dev libmunge2 munge ocfs2-tools gcc g++
+apt-get install -y make autoconf libglib2.0-dev libgtk2.0-dev cmake git libmunge-dev libmunge2 munge ocfs2-tools gcc g++
 
 #Network config
 echo "10.0.0.10	controller" >> /etc/hosts
@@ -13,13 +13,19 @@ cp /vagrant/munge.key /etc/munge/
 #Install slurm
 adduser slurm --no-create-home --disabled-password --gecos ""
 
-cp /vagrant/slurm.conf /usr/local/etc/
 cd /vagrant/slurm
 git checkout slurm-20-02-4-1
-cp /vagrant/job_submit_all_partitions.c /vagrant/slurm/src/plugins/job_submit/all_partitions/
 
-./configure
-make --silent
+cp /vagrant/configure.ac /vagrant/slurm/
+cp /vagrant/Makefile.am /vagrant/slurm/src/plugins/job_submit/
+cp -r /vagrant/storage_aware /vagrant/slurm/src/plugins/job_submit/
+cp /vagrant/slurm.conf /usr/local/etc/
+
+if [ "$HOSTNAME" = "controller" ]; then
+	autoreconf
+	./configure
+	make --silent
+fi
 make --silent install
 
 mkdir /var/log/slurm
