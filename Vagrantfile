@@ -1,4 +1,4 @@
-BOX_IMAGE = "bento/ubuntu-18.04"
+BOX_IMAGE = "bento/ubuntu-20.04"
 SERVER_COUNT = 2
 LPS_PATH = "lps.vdi"
 HPS_PATH = "hps.vdi"
@@ -41,8 +41,8 @@ Vagrant.configure("2") do |config|
         vb.customize ['bandwidthctl', :id, 'add', 'Slow', '--type', 'disk', '--limit', '12M']
         vb.customize ['bandwidthctl', :id, 'add', 'Fast', '--type', 'disk', '--limit', '192M']
       end
-      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', LPS_PATH, '--bandwidthgroup', "Slow"]
-      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 3, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', HPS_PATH, '--bandwidthgroup', "Fast"]
+      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', LPS_PATH, '--bandwidthgroup', "Slow"]
+      vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', HPS_PATH, '--bandwidthgroup', "Fast"]
     end
   end
 
@@ -59,8 +59,8 @@ Vagrant.configure("2") do |config|
           vb.customize ['bandwidthctl', :id, 'add', 'Slow', '--type', 'disk', '--limit', '12M']
           vb.customize ['bandwidthctl', :id, 'add', 'Fast', '--type', 'disk', '--limit', '192M']
         end
-        vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', LPS_PATH, '--bandwidthgroup', "Slow"]
-        vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 3, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', HPS_PATH, '--bandwidthgroup', "Fast"]
+        vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', LPS_PATH, '--bandwidthgroup', "Slow"]
+        vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 2, '--device', 0, '--type', 'hdd', '--mtype', 'shareable', '--medium', HPS_PATH, '--bandwidthgroup', "Fast"]
       end
     end
   end
