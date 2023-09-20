@@ -51,8 +51,11 @@ We have used a virtual cluster for our development and test purposes. To make th
 10. Repeat steps 7 and 8 for **server2** VM.
 11. Make sure that **server1** and **server2** are in idle state and ready to accept jobs, by running `sinfo` on the **controller** VM.
 
-With this setup, Vagrant creates three machines (two compute nodes and a single control daemon server) and two 5 GiB shared storage tiers (**LPS** and **HPS**). Jobs are submitted using the `sbatch` command. By passing the job storage requirements of jobs (e.g. `sbatch --bb="capacity=1024 io=8192" sample_job.sh`), as discussed in the previous section, Slurm will decide which compute and data resources are assigned the job. 
+With this setup, Vagrant creates three machines (two compute nodes and a single control daemon server) and two 5 GiB shared storage tiers (**LPS** and **HPS**). Jobs are submitted using the `sbatch` command. By passing the job storage requirements of jobs (e.g. `sbatch --bb="capacity=1024 io=8192" sample_job.sh`), as discussed in the previous section, Slurm will decide which compute and data resources are assigned to the job. 
 
 ## References
 <a id="1">[1]</a>
 Leah E. Lackner, Hamid Mohammadi Fard, Felix Wolf: Efficient Job Scheduling for Clusters with Shared Tiered Storage. In Proc. of the 19th IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing (CCGrid), Larnaca, Cyprus, pages 321–330, IEEE, May 2019.
+
+## Acknowledgements
+This open source software was supported by the EBRAINS research infrastructure, funded from the European Union’s Horizon 2020 Framework Programme for Research and Innovation under the Specific Grant Agreement No. 785907 and No. 945539 (Human Brain Project SGA2 and SGA3).
