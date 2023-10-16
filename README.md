@@ -42,13 +42,13 @@ We have used a virtual cluster for our development and test purposes. To make th
 1. Install both **VirtualBox** and **Vagrant** software inside a Linux system.
 2. Clone the repository of the project, to setup the virtual cluster.
 3. Clone Slurm (https://github.com/SchedMD/slurm.git) in the same folder.
-4. Checkout the Slurm version **slurm-20-02-5-1**
+4. Checkout the Slurm version **slurm-21-08-8-2**
 5. Run `vagrant up`.
 6. Run `vagrant ssh controller`.
 7. Run `start_slurm`.
 8. Run `vagrant ssh server1` in a separate session.
 9. Run `start_slurm`.
-10. Repeat steps 7 and 8 for **server2** VM.
+10. Repeat steps 8 and 9 for **server2** VM.
 11. Make sure that **server1** and **server2** are in idle state and ready to accept jobs, by running `sinfo` on the **controller** VM.
 
 With this setup, Vagrant creates three machines (two compute nodes and a single control daemon server) and two 5 GiB shared storage tiers (**LPS** and **HPS**). Jobs are submitted using the `sbatch` command. By passing the job storage requirements of jobs (e.g. `sbatch --bb="capacity=1024 io=8192" sample_job.sh`), as discussed in the previous section, Slurm will decide which compute and data resources are assigned to the job. 

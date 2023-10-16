@@ -19,7 +19,7 @@ cp /vagrant/slurm.conf /usr/local/etc/
 # Compile and install Slurm
 cd /vagrant/slurm
 if [ "$HOSTNAME" = "controller" ]; then
-	git checkout slurm-20-02-5-1
+	git checkout slurm-21-08-8-2
 	cp /vagrant/configure.ac /vagrant/slurm/
 	cp /vagrant/Makefile.am /vagrant/slurm/src/plugins/job_submit/
 	cp -r /vagrant/storage_aware /vagrant/slurm/src/plugins/job_submit/
@@ -32,11 +32,11 @@ make --silent install
 mkdir /var/log/slurm
 touch /var/log/slurm/job_completions
 touch /var/log/slurm/accounting
-mkdir /var/spool/slurm
+mkdir /var/spool/slurmctld
 mkdir /var/spool/slurmd
 
 chown -R slurm:root /var/log/slurm
-chown -R slurm:root /var/spool/slurm
+chown -R slurm:root /var/spool/slurmctld
 
 cp /vagrant/ocfs2_configs/cluster.conf /etc/ocfs2/cluster.conf
 cp /vagrant/ocfs2_configs/o2cb /etc/default/

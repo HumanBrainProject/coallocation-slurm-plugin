@@ -82,7 +82,7 @@ static pthread_mutex_t pthread_lock = PTHREAD_MUTEX_INITIALIZER;
  * @param hps (IN) whether the job should be allocated on the HPS
  * @param expected_hps_wait_time (IN) the expected HPS waiting time in seconds (disregarded when hps == false)
  */
-static void _allocate_storage_tier(struct job_descriptor* job_desc, bool hps, time_t expected_hps_wait_time) {
+static void _allocate_storage_tier(job_desc_msg_t* job_desc, bool hps, time_t expected_hps_wait_time) {
 	info("_allocate_storage_tier start");
 	job_desc->environment = (char**) xrealloc(job_desc->environment, (job_desc->env_size + 2) * sizeof(char*));
 	if (hps) {
@@ -250,7 +250,7 @@ extern int init(void) {
 	return SLURM_SUCCESS;
 }
 
-extern int job_submit(struct job_descriptor* job_desc, uint32_t submit_uid, char** err_msg) {
+extern int job_submit(job_desc_msg_t* job_desc, uint32_t submit_uid, char** err_msg) {
 
 	info("job_submit start");
 	slurm_mutex_lock(&pthread_lock);
@@ -305,7 +305,7 @@ extern int job_submit(struct job_descriptor* job_desc, uint32_t submit_uid, char
 	return SLURM_SUCCESS;
 }
 
-extern int job_modify(struct job_descriptor* job_desc, struct job_record* job_ptr, uint32_t submit_uid) {
+extern int job_modify(job_desc_msg_t* job_desc, struct job_record* job_ptr, uint32_t submit_uid) {
 	// currently not implemented
 	return SLURM_SUCCESS;
 }
